@@ -1,3 +1,115 @@
+    let currentPopupLanguage = "ko"
+    let popupShown = false
+
+    const popupContent = {
+      ko: {
+        title: "호치민 데이트 플랜에 오신 것을 환영합니다! 🎉",
+        subtitle: "결혼의 여신과 함께하는 특별한 여행",
+        description: "8개의 완벽하게 큐레이션된 데이트 코스로 호치민에서 잊지 못할 추억을 만들어보세요.",
+        features: ["전문적으로 선별된 8개 코스", "상세한 시간표와 위치 정보", "현지 맛집 추천", "한국어-베트남어 지원"],
+        startButton: "여행 시작하기",
+        closeButton: "닫기",
+        brandName: "결혼의 여신",
+        brandSubtitle: "호치민 여행 가이드",
+      },
+      vi: {
+        title: "Chào mừng đến với Kế hoạch hẹn hò TP.HCM! 🎉",
+        subtitle: "Chuyến du lịch đặc biệt cùng Hôn Nhân Quốc Tế",
+        description: "8 lộ trình hẹn hò được tuyển chọn hoàn hảo để tạo nên những kỷ niệm khó quên tại TP.HCM.",
+        features: [
+          "8 lộ trình được chọn lọc chuyên nghiệp",
+          "Thông tin thời gian và địa điểm chi tiết",
+          "Gợi ý nhà hàng địa phương",
+          "Hỗ trợ tiếng Hàn - tiếng Việt",
+        ],
+        startButton: "Bắt đầu du lịch",
+        closeButton: "Đóng",
+        brandName: "Hôn Nhân Quốc Tế",
+        brandSubtitle: "Hướng dẫn du lịch TP.HCM",
+      },
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!sessionStorage.getItem("popupShown")) {
+        setTimeout(showPopup, 1500)
+      }
+    })
+
+    function showPopup() {
+      const popup = document.getElementById("welcomePopup")
+      if (popup) {
+        popup.classList.add("show")
+        popupShown = true
+        sessionStorage.setItem("popupShown", "true")
+        document.body.style.overflow = "hidden"
+      }
+    }
+    function closePopup() {
+      const popup = document.getElementById("welcomePopup")
+      if (popup) {
+        popup.classList.remove("show")
+        document.body.style.overflow = ""
+      }
+    }
+    function startTour() {
+      closePopup()
+      const coursesSection = document.querySelector(".courses-grid")
+      if (coursesSection) {
+        coursesSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
+    }
+    function switchPopupLanguage(lang) {
+      currentPopupLanguage = lang
+      const langButtons = document.querySelectorAll(".popup-lang-btn")
+      langButtons.forEach((btn) => {
+        btn.classList.remove("active")
+      })
+      const activeLangBtn = document.querySelector(`[onclick="switchPopupLanguage('${lang}')"]`)
+      if (activeLangBtn) {
+        activeLangBtn.classList.add("active")
+      }
+      updatePopupContent(lang)
+    }
+    function updatePopupContent(lang) {
+      const elements = document.querySelectorAll("#welcomePopup [data-ko][data-vi]")
+
+      elements.forEach((element) => {
+        const text = element.getAttribute(`data-${lang}`)
+        if (text) {
+          element.textContent = text
+        }
+      })
+      const featureTexts = document.querySelectorAll(".popup-feature-text")
+      featureTexts.forEach((element, index) => {
+        if (popupContent[lang].features[index]) {
+          element.textContent = popupContent[lang].features[index]
+        }
+      })
+    }
+    document.addEventListener("click", (event) => {
+      const popup = document.getElementById("welcomePopup")
+      const popupContainer = document.querySelector(".popup-container")
+
+      if (popup && popup.classList.contains("show")) {
+        if (event.target === popup && !popupContainer.contains(event.target)) {
+          closePopup()
+        }
+      }
+    })
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        const popup = document.getElementById("welcomePopup")
+        if (popup && popup.classList.contains("show")) {
+          closePopup()
+        }
+      }
+    })
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.setItem("popupShown", "true")
+    })
+
 document.addEventListener("DOMContentLoaded", () => {
   const langKoBtn = document.getElementById("lang-ko")
   const langViBtn = document.getElementById("lang-vi")
