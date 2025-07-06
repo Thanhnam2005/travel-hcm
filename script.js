@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const titles = {
       ko: "호치민 데이트 플랜 - 전문 여행 가이드",
-      vi: "Kế hoạch hẹn hò tại TP.HCM - Hướng dẫn du lịch chuyên nghiệp",
+      vi: "JeongSeok - Du Lịch Thành Phố Hồ Chí Minh.",
     }
     document.title = titles[lang]
   }
