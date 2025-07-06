@@ -8,6 +8,66 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="welcomePopup" class="popup-overlay">
+    <div class="popup-container">
+      <div class="popup-header">
+        <button class="popup-close-btn" onclick="closePopup()">&times;</button>
+        
+        <div class="popup-logo-section">
+          <div class="popup-logo-icon">
+            <span>💕</span>
+          </div>
+          <div>
+            <h3 class="popup-brand-name" data-ko="결혼의 여신" data-vi="Hôn Nhân Quốc Tế">결혼의 여신</h3>
+            <p class="popup-brand-subtitle" data-ko="호치민 여행 가이드" data-vi="Hướng dẫn du lịch TP.HCM">호치민 여행 가이드</p>
+          </div>
+        </div>
+
+        <div class="popup-language-toggle">
+          <button class="popup-lang-btn active" onclick="switchPopupLanguage('ko')">한국어</button>
+          <button class="popup-lang-btn" onclick="switchPopupLanguage('vi')">Tiếng Việt</button>
+        </div>
+
+        <h1 class="popup-title" data-ko="호치민 데이트 플랜에 오신 것을 환영합니다! 🎉" data-vi="Chào mừng đến với Kế hoạch hẹn hò TP.HCM! 🎉">
+          호치민 데이트 플랜에 오신 것을 환영합니다! 🎉
+        </h1>
+        <p class="popup-subtitle" data-ko="결혼의 여신과 함께하는 특별한 여행" data-vi="Chuyến du lịch đặc biệt cùng Hôn Nhân Quốc Tế">
+          결혼의 여신과 함께하는 특별한 여행
+        </p>
+      </div>
+
+      <div class="popup-content">
+        <p class="popup-description" data-ko="8개의 완벽하게 큐레이션된 데이트 코스로 호치민에서 잊지 못할 추억을 만들어보세요." data-vi="8 lộ trình hẹn hò được tuyển chọn hoàn hảo để tạo nên những kỷ niệm khó quên tại TP.HCM.">
+          8개의 완벽하게 큐레이션된 데이트 코스로 호치민에서 잊지 못할 추억을 만들어보세요.
+        </p>
+
+        <div class="popup-features-list">
+          <div class="popup-feature-item">
+            <div class="popup-feature-icon">⭐</div>
+            <span class="popup-feature-text" data-ko="전문적으로 선별된 8개 코스" data-vi="8 lộ trình được chọn lọc chuyên nghiệp">전문적으로 선별된 8개 코스</span>
+          </div>
+          <div class="popup-feature-item">
+            <div class="popup-feature-icon">📍</div>
+            <span class="popup-feature-text" data-ko="상세한 시간표와 위치 정보" data-vi="Thông tin thời gian và địa điểm chi tiết">상세한 시간표와 위치 정보</span>
+          </div>
+          <div class="popup-feature-item">
+            <div class="popup-feature-icon">🍽️</div>
+            <span class="popup-feature-text" data-ko="현지 맛집 추천" data-vi="Gợi ý nhà hàng địa phương">현지 맛집 추천</span>
+          </div>
+          <div class="popup-feature-item">
+            <div class="popup-feature-icon">🌐</div>
+            <span class="popup-feature-text" data-ko="한국어-베트남어 지원" data-vi="Hỗ trợ tiếng Hàn - tiếng Việt">한국어-베트남어 지원</span>
+          </div>
+        </div>
+
+        <div class="popup-actions">
+          <button class="popup-start-btn" onclick="startTour()" data-ko="여행 시작하기" data-vi="Bắt đầu du lịch">여행 시작하기</button>
+          <button class="popup-close-btn-secondary" onclick="closePopup()" data-ko="닫기" data-vi="Đóng">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="language-toggle">
     <button id="lang-ko" class="lang-btn active">한국어</button>
     <button id="lang-vi" class="lang-btn">Tiếng Việt</button>
@@ -623,19 +683,6 @@
 
             <div class="activity">
               <div class="activity-time">
-                <span class="time-badge">⏰ 12:00–13:30</span>
-              </div>
-              <div class="activity-details">
-                <h3 class="activity-title" data-ko="근처 분보남보 (Bun Bo Nam Bo) 전문점 등 점심" data-vi="Ăn trưa tại quán Bún bò Nam Bộ gần đó">근처 분보남보 (Bun Bo Nam Bo) 전문점 등 점심</h3>
-                <div class="activity-address">
-                  <span class="address-icon">📍</span>
-                  <span data-ko="(근방 쌀국수집, 반미, 분짜 가게 다양)" data-vi="(Nhiều quán phở, bánh mì, bún chả gần đó)">(근방 쌀국수집, 반미, 분짜 가게 다양)</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="activity">
-              <div class="activity-time">
                 <span class="time-badge">⏰ 13:30–15:30</span>
               </div>
               <div class="activity-details">
@@ -825,7 +872,7 @@
           </div>
         </div>
 
-        <div class="course-card">
+                <div class="course-card">
           <div class="course-header">
             <h2 class="course-title">
               <span class="course-icon">🏮</span>
@@ -939,7 +986,7 @@
       <div class="footer-content">
         <div class="footer-logo">
           <div class="logo">
-            <img src="images/logo.jpg" alt="결혼의 여신 로고" class="logo-image" />
+            <img src="images/logo2.jpg" alt="결혼의 여신 로고" class="logo-image" />
           </div>
           <span class="footer-brand" data-ko="결혼의 여신" data-vi="Hôn Nhân Quốc Tế ">결혼의 여신</span>
         </div>
